@@ -95,12 +95,34 @@
         right: 200px;
         transform: translateY(30px) rotate(-15deg);
       }
+
       .hero_images img:nth-child(2) {
         right: 100px;
       }
+
       .hero_images img:nth-child(3) {
         right: 0px;
         transform: translateY(30px) rotate(15deg);
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hero__action {
+        display: block;
+        padding: 0.75rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 0.25rem;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .hero__action--primary {
+        background: var(--primary);
+        color: white;
       }
     </style>
   </head>
@@ -129,6 +151,12 @@
             ingredients and techniques, and easily access your recipes from
             anywhere.
           </p>
+          <div class="hero__actions">
+            <button class="hero__action hero__action--primary">
+              Explore recipes
+            </button>
+            <button class="hero__action">Create your own recipe</button>
+          </div>
         </div>
         <div class="hero_images">
           <img
