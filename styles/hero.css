@@ -6,7 +6,18 @@
   gap: 4rem;
 }
 
+.hero__title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  color: rgb(61, 61, 61);
+  margin-bottom: 2rem;
+}
+
 .hero_images {
+  margin: auto 0;
   position: relative;
   height: 200px;
 }
@@ -42,7 +53,8 @@
 
 .hero__action {
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.8rem;
   border: none;
   outline: none;
   border-radius: 0.25rem;
@@ -53,4 +65,9 @@
 .hero__action--primary {
   background: var(--primary);
   color: white;
+  transition: background-color ease-out 200ms;
+}
+
+.hero__action--primary:hover {
+  background-color: var(--primary-light);
 }

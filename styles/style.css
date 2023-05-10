@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,7 +11,8 @@
   --fg-color: rgb(22, 22, 22);
   --fg-secondary: rgb(36, 36, 36);
   --primary: rgb(12, 12, 61);
-  --structure: rgb(197, 197, 197);
+  --primary-light: rgb(37, 37, 184);
+  --structure: rgb(207, 207, 207);
 }
 
 html,
@@ -30,6 +35,7 @@ a {
   margin: auto auto;
   max-width: 1200px;
   width: 100%;
+  padding: 0rem 1rem;
 }
 
 .header {
@@ -40,12 +46,16 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .header__link_container {
   list-style: none;
   display: flex;
   gap: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .header__logo {
