@@ -6,24 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <script type="module" src="/main.js" defer></script>
+
+    <style>
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+
+        --bg-color: rgb(245, 245, 245);
+        --fg-color: rgb(22, 22, 22);
+        --fg-secondary: rgb(36, 36, 36);
+        --primary: rgb(12, 12, 61);
+        --structure: rgb(197, 197, 197);
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--fg-secondary);
+      }
+
+      .container {
+        margin: auto auto;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .header {
+        border-bottom: 1px solid var(--structure);
+      }
+
+      .header__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header__link_container {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .header__logo {
+        color: var(--primary);
+      }
+
+      .page_height {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .hero {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        gap: 4rem;
+      }
+
+      .hero_images {
+        position: relative;
+        height: 200px;
+      }
+
+      .hero_images img {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+        position: absolute;
+        display: block;
+      }
+
+      .hero_images img:nth-child(1) {
+        left: 0px;
+        transform: translateY(30px) rotate(-15deg);
+      }
+      .hero_images img:nth-child(2) {
+        left: 150px;
+      }
+      .hero_images img:nth-child(3) {
+        left: 300px;
+        transform: translateY(30px) rotate(15deg);
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="logo_container">
-          <a class="logo" href="/">Saief El Gebali</a>
-        </div>
-        <div class="link_container">
-          <ul>
+    <div class="page_height">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header__logo_container">
+            <a class="header__logo" href="/">Safe Bakes</a>
+          </div>
+          <ul class="header__link_container">
             <li>
-              <a href="/">About</a>
+              <a href="/">Explore</a>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <a href="/">Your Recipes</a>
             </li>
           </ul>
         </div>
+      </header>
+      <div class="hero container">
+        <div>
+          <h1>Discover and share your favorite baking recipes</h1>
+          <p>
+            Build your own collection of sweet and savory treats, explore new
+            ingredients and techniques, and easily access your recipes from
+            anywhere.
+          </p>
+        </div>
+        <div class="hero_images">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tiramisu_-_Raffaele_Diomede.jpg/800px-Tiramisu_-_Raffaele_Diomede.jpg"
+            alt="tiramisu"
+          />
+          <img
+            src="https://tornadoughalli.com/wp-content/uploads/2022/09/STICKY-TOFFEE-PUDDING-RECIPE-2-1.jpg"
+            alt="sticky toffee pudding"
+          />
+          <img
+            src="https://thelittleglutenfreebakingblog.com/wp-content/uploads/2022/05/image_editor_output_image1472385169-1653916712938.jpg"
+            alt="victoria sponge"
+          />
+        </div>
       </div>
-    </header>
+    </div>
+    <main></main>
   </body>
 </html>
