@@ -1,0 +1,56 @@
+.hero {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  gap: 4rem;
+}
+
+.hero_images {
+  position: relative;
+  height: 200px;
+}
+
+.hero_images img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  position: absolute;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px 2px hsl(0, 0%, 0%, 0.1);
+}
+
+.hero_images img:nth-child(1) {
+  right: 200px;
+  transform: translateY(30px) rotate(-15deg);
+}
+
+.hero_images img:nth-child(2) {
+  right: 100px;
+}
+
+.hero_images img:nth-child(3) {
+  right: 0px;
+  transform: translateY(30px) rotate(15deg);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero__action {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hero__action--primary {
+  background: var(--primary);
+  color: white;
+}
