@@ -1,9 +1,15 @@
 .hero {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   place-content: center;
   gap: 4rem;
+}
+
+@media screen and (min-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .hero__title {

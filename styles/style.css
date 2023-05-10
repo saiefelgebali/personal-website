@@ -58,6 +58,14 @@ a {
   margin: 0;
 }
 
+.header__link a {
+  font-size: 1rem;
+}
+
+.header__link--selected a {
+  color: var(--primary);
+}
+
 .header__logo {
   color: var(--primary);
 }
