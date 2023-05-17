@@ -5,9 +5,10 @@
   place-content: center;
   gap: 4rem;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .hero {
     grid-template-columns: 1fr 1fr;
+    gap: 0rem;
   }
 }
 .hero .title {
