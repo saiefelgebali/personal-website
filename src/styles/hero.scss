@@ -34,19 +34,31 @@
       display: block;
       border-radius: 0.5rem;
       box-shadow: 2px 2px 4px 2px hsl(0, 0%, 0%, 0.1);
+      transition: translate 250ms ease-out;
 
       &:nth-child(1) {
         right: 200px;
-        transform: translateY(30px) rotate(-15deg);
+        rotate: -15deg;
+        translate: 0px 30px;
+        &:hover {
+          translate: 0px 20px;
+        }
       }
 
       &:nth-child(2) {
         right: 100px;
+        &:hover {
+          translate: 0px -10px;
+        }
       }
 
       &:nth-child(3) {
         right: 0px;
-        transform: translateY(30px) rotate(15deg);
+        rotate: 15deg;
+        translate: 0px 30px;
+        &:hover {
+          translate: 0px 20px;
+        }
       }
     }
   }

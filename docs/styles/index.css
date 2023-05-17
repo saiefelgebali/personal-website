@@ -31,17 +31,29 @@
   display: block;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 4px 2px hsla(0, 0%, 0%, 0.1);
+  transition: translate 250ms ease-out;
 }
 .hero .images img:nth-child(1) {
   right: 200px;
-  transform: translateY(30px) rotate(-15deg);
+  rotate: -15deg;
+  translate: 0px 30px;
+}
+.hero .images img:nth-child(1):hover {
+  translate: 0px 20px;
 }
 .hero .images img:nth-child(2) {
   right: 100px;
 }
+.hero .images img:nth-child(2):hover {
+  translate: 0px -10px;
+}
 .hero .images img:nth-child(3) {
   right: 0px;
-  transform: translateY(30px) rotate(15deg);
+  rotate: 15deg;
+  translate: 0px 30px;
+}
+.hero .images img:nth-child(3):hover {
+  translate: 0px 20px;
 }
 .hero .actions {
   display: flex;
