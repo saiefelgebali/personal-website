@@ -1,0 +1,33 @@
+.header {
+  border-bottom: 1px solid var(--structure);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .logo-container {
+    .logo {
+      color: var(--primary);
+    }
+  }
+
+  .link-container {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+
+    .link a {
+      font-size: 1rem;
+    }
+
+    .link-selected a {
+      color: var(--primary);
+    }
+  }
+}

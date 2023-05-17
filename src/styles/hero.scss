@@ -1,0 +1,79 @@
+.hero {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  gap: 4rem;
+
+  @media screen and (min-width: 800px) {
+    & {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .title {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    color: rgb(61, 61, 61);
+    margin-bottom: 2rem;
+  }
+
+  .images {
+    margin: auto 0;
+    position: relative;
+    height: 200px;
+
+    img {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+      position: absolute;
+      display: block;
+      border-radius: 0.5rem;
+      box-shadow: 2px 2px 4px 2px hsl(0, 0%, 0%, 0.1);
+
+      &:nth-child(1) {
+        right: 200px;
+        transform: translateY(30px) rotate(-15deg);
+      }
+
+      &:nth-child(2) {
+        right: 100px;
+      }
+
+      &:nth-child(3) {
+        right: 0px;
+        transform: translateY(30px) rotate(15deg);
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+
+    .action {
+      display: block;
+      padding: 1rem 1.5rem;
+      font-size: 0.8rem;
+      border: none;
+      outline: none;
+      border-radius: 0.25rem;
+      background-color: transparent;
+      cursor: pointer;
+
+      &.action-primary {
+        background: var(--primary);
+        color: white;
+        transition: background-color ease-out 200ms;
+
+        &:hover {
+          background-color: var(--primary-light);
+        }
+      }
+    }
+  }
+}

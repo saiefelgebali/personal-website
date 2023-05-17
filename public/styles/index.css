@@ -1,0 +1,141 @@
+.hero {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  gap: 4rem;
+}
+@media screen and (min-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.hero .title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.hero .subtitle {
+  color: rgb(61, 61, 61);
+  margin-bottom: 2rem;
+}
+.hero .images {
+  margin: auto 0;
+  position: relative;
+  height: 200px;
+}
+.hero .images img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  position: absolute;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px 2px hsla(0, 0%, 0%, 0.1);
+}
+.hero .images img:nth-child(1) {
+  right: 200px;
+  transform: translateY(30px) rotate(-15deg);
+}
+.hero .images img:nth-child(2) {
+  right: 100px;
+}
+.hero .images img:nth-child(3) {
+  right: 0px;
+  transform: translateY(30px) rotate(15deg);
+}
+.hero .actions {
+  display: flex;
+  gap: 1rem;
+}
+.hero .actions .action {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+.hero .actions .action.action-primary {
+  background: var(--primary);
+  color: white;
+  transition: background-color ease-out 200ms;
+}
+.hero .actions .action.action-primary:hover {
+  background-color: var(--primary-light);
+}
+
+.header {
+  border-bottom: 1px solid var(--structure);
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.header .logo-container .logo {
+  color: var(--primary);
+}
+.header .link-container {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.header .link-container .link a {
+  font-size: 1rem;
+}
+.header .link-container .link-selected a {
+  color: var(--primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --bg-color: rgb(245, 245, 245);
+  --fg-color: rgb(22, 22, 22);
+  --fg-secondary: rgb(36, 36, 36);
+  --primary: rgb(12, 12, 61);
+  --primary-light: rgb(37, 37, 184);
+  --structure: rgb(207, 207, 207);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--fg-secondary);
+}
+
+.container {
+  margin: auto auto;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0rem 1rem;
+}
+
+.page-height {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=index.css.map */
