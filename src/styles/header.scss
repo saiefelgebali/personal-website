@@ -26,8 +26,10 @@
       font-size: 1rem;
     }
 
-    .link-selected a {
-      color: var(--primary);
+    .link-selected {
+      cursor: default;
+
+      opacity: 0.5;
     }
   }
 }

@@ -1,6 +1,3 @@
-@import "./hero.scss";
-@import "./header.scss";
-
 * {
   box-sizing: border-box;
 }
@@ -50,3 +47,6 @@ img {
   flex-direction: column;
   min-height: 100vh;
 }
+
+@import "./hero.scss";
+@import "./header.scss";
