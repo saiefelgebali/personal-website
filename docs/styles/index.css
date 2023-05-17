@@ -18,26 +18,32 @@
   color: rgb(61, 61, 61);
   margin-bottom: 2rem;
 }
+
 .hero .images {
   display: flex;
   justify-content: center;
 }
-.hero .images:hover > img {
+.hero .images:hover > .image {
   animation-play-state: paused;
   filter: grayscale(100%);
 }
-.hero .images img:hover {
+.hero .images .image:hover {
   filter: none;
 }
-.hero .images img {
+.hero .images .image {
+  cursor: pointer;
   width: 150px;
   height: 200px;
-  object-fit: cover;
-  display: block;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 4px 2px hsla(0, 0%, 0%, 0.1);
   transition: 250ms ease-out;
+  overflow: hidden;
   animation: bounce 2500ms alternate-reverse infinite;
+}
+.hero .images .image img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 @keyframes bounce {
   from {
@@ -47,29 +53,30 @@
     transform: translateY(0px);
   }
 }
-.hero .images img:nth-child(1) {
+.hero .images .image:nth-child(1) {
   rotate: -15deg;
   translate: 30px 30px;
   z-index: 1;
 }
-.hero .images img:nth-child(1):hover {
+.hero .images .image:nth-child(1):hover {
   translate: 20px 10px;
 }
-.hero .images img:nth-child(2) {
+.hero .images .image:nth-child(2) {
   translate: 0px 0px;
   z-index: 2;
 }
-.hero .images img:nth-child(2):hover {
+.hero .images .image:nth-child(2):hover {
   translate: 0px -20px;
 }
-.hero .images img:nth-child(3) {
+.hero .images .image:nth-child(3) {
   rotate: 15deg;
   translate: -30px 30px;
   z-index: 1;
 }
-.hero .images img:nth-child(3):hover {
+.hero .images .image:nth-child(3):hover {
   translate: -20px 10px;
 }
+
 .hero .actions {
   display: flex;
   gap: 1rem;
@@ -150,6 +157,10 @@ body {
 a {
   text-decoration: none;
   color: var(--fg-secondary);
+}
+
+img {
+  width: 100%;
 }
 
 .container {
