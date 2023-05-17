@@ -40,6 +40,10 @@
   transition: 250ms ease-out;
   overflow: hidden;
   animation: bounce 2500ms alternate-reverse infinite;
+  -moz-animation: bounce 2500ms alternate-reverse infinite;
+  -webkit-animation: bounce 2500ms alternate-reverse infinite;
+  -o-animation: bounce 2500ms alternate-reverse infinite;
+  -ms-animation: bounce 2500ms alternate-reverse infinite;
 }
 .hero .images .image img {
   display: block;
@@ -47,6 +51,38 @@
   object-fit: cover;
 }
 @keyframes bounce {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@-moz-keyframes bounce  /* Firefox */ {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes logo  /* Safari and Chrome */ {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@-o-keyframes bounce  /* Opera */ {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@-ms-keyframes bounce /* IE */ {
   from {
     transform: translateY(10px);
   }

@@ -7,7 +7,7 @@
     "dev": "vite ./docs",
     "build": "npm run sass:build",
     "preview": "http-server ./docs",
-    "sass:build": "sass ./src/styles/index.scss ./styles/index.css",
+    "sass:build": "sass ./src/styles/index.scss ./docs/styles/index.css",
     "sass:watch": "sass --watch ./src/styles/index.scss ./docs/styles/index.css"
   },
   "devDependencies": {

@@ -1,3 +1,11 @@
+@mixin animate($val) {
+  animation: $val;
+  -moz-animation: $val;
+  -webkit-animation: $val;
+  -o-animation: $val;
+  -ms-animation: $val;
+}
+
 .hero {
   flex-grow: 1;
   display: grid;
@@ -59,7 +67,39 @@
         transform: translateY(0px);
       }
     }
-    animation: bounce 2500ms alternate-reverse infinite;
+    @-moz-keyframes bounce  /* Firefox */ {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+    @-webkit-keyframes logo  /* Safari and Chrome */ {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+    @-o-keyframes bounce  /* Opera */ {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+    @-ms-keyframes bounce /* IE */ {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+    @include animate(bounce 2500ms alternate-reverse infinite);
 
     &:nth-child(1) {
       rotate: -15deg;
