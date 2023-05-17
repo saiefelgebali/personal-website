@@ -23,6 +23,7 @@
   justify-content: center;
 }
 .hero .images:hover > img {
+  animation-play-state: paused;
   filter: grayscale(100%);
 }
 .hero .images img:hover {
@@ -36,6 +37,15 @@
   border-radius: 0.5rem;
   box-shadow: 2px 2px 4px 2px hsla(0, 0%, 0%, 0.1);
   transition: 250ms ease-out;
+  animation: bounce 2500ms alternate-reverse infinite;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 }
 .hero .images img:nth-child(1) {
   rotate: -15deg;
