@@ -7,11 +7,16 @@
     "dev": "vite ./docs",
     "build": "npm run sass:build",
     "preview": "http-server ./docs",
-    "sass:build": "sass ./src/styles/index.scss ./docs/styles/index.css",
-    "sass:watch": "sass --watch ./src/styles/index.scss ./docs/styles/index.css"
+    "sass:watch": "chokidar ./src/styles/*.scss --command 'node-sass-chokidar ./src/styles/index.scss | postcss --use autoprefixer > ./docs/styles/index.css'",
+    "sass:build": "node-sass-chokidar ./src/styles/index.scss --output-style compressed --quiet | postcss --use autoprefixer --no-map > ./docs/styles/index.css"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "chokidar-cli": "^3.0.0",
     "http-server": "^14.1.1",
+    "node-sass-chokidar": "^2.0.0",
+    "postcss": "^8.4.23",
+    "postcss-cli": "^10.1.0",
     "sass": "^1.62.1",
     "vite": "^4.3.2"
   }
