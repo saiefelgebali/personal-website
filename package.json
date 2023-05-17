@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite ./public",
+    "dev": "vite ./docs",
     "build": "npm run sass:build",
-    "preview": "http-server ./public",
+    "preview": "http-server ./docs",
     "sass:build": "sass ./src/styles/index.scss ./styles/index.css",
-    "sass:watch": "sass --watch ./src/styles/index.scss ./public/styles/index.css"
+    "sass:watch": "sass --watch ./src/styles/index.scss ./docs/styles/index.css"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
