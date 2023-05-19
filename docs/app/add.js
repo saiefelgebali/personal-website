@@ -1,6 +1,6 @@
-import { FormValidationError } from "./FormValidationError.js";
-import { Recipe } from "./Recipe.js";
-import { createDatabaseConnection } from "./db.js";
+import { FormValidationError } from "/app/FormValidationError.js";
+import { Recipe } from "/app/Recipe.js";
+import { createDatabaseConnection } from "/app/db.js";
 
 const form = document.getElementById("add-recipe-form");
 
