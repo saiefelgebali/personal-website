@@ -7,6 +7,7 @@
     <title>Saief Bakes</title>
     <link rel="stylesheet" href="./styles/index.css" />
     <script type="module" src="/app/add.js" defer></script>
+    <script type="module" src="/app/imagePreview.js"></script>
   </head>
   <body>
     <header class="header">
@@ -26,9 +27,18 @@
     </header>
     <main class="container">
       <h1>Add a new Recipe</h1>
-      <form>
-        <input type="text" name="name" placeholder="Carrot cake" />
+      <form id="add-recipe-form">
+        <input required type="text" name="name" placeholder="Carrot cake" />
+        <input
+          required
+          id="image-input"
+          type="file"
+          accept="image/*"
+          name="image"
+        />
+        <input type="submit" value="Add" />
       </form>
+      <img id="image-preview" src="" alt="" />
       <div id="recipes-container" class="recipes"></div>
     </main>
   </body>

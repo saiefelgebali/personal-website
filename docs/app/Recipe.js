@@ -1,7 +1,10 @@
 export class Recipe {
   /** @type {string} */
-  name;
+  id;
 
   /** @type {string} */
+  name;
+
+  /** @type {Blob} */
   image;
 }

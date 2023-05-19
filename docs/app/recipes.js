@@ -1,4 +1,5 @@
 import { Recipe } from "./Recipe";
+import { createDatabaseConnection } from "./db";
 
 /** @type {Recipe[]} */
 const recipes = [
@@ -19,18 +20,45 @@ const recipes = [
   },
 ];
 
-function populateRecipes() {
+/**
+ * @param {Recipe} recipe
+ * @param {HTMLElement} container
+ */
+function appendRecipeToContainer(recipe, container) {
+  let imageSrc;
+  if (typeof recipe.image === "string") {
+    imageSrc = recipe.image;
+  } else {
+    imageSrc = URL.createObjectURL(recipe.image);
+  }
+
+  const element = document.createElement("div");
+  element.className = "recipe";
+  element.innerHTML = `
+      <h2 class="name">${recipe.name}</h2>
+      <img class="image" src="${imageSrc}" />
+      `;
+  container.appendChild(element);
+}
+
+async function populateRecipes() {
   const container = document.getElementById("recipes-container");
 
-  recipes.forEach((recipe) => {
-    const element = document.createElement("div");
-    element.className = "recipe";
-    element.innerHTML = `
-    <h2 class="name">${recipe.name}</h2>
-    <img class="image" src="${recipe.image}" />
-    `;
-    container.appendChild(element);
-  });
+  const db = await createDatabaseConnection();
+
+  const recipesStore = db
+    .transaction(["recipes"], "readwrite")
+    .objectStore("recipes");
+
+  const request = recipesStore.getAll();
+
+  request.onsuccess = (e) => {
+    request.result.forEach((recipe) =>
+      appendRecipeToContainer(recipe, container)
+    );
+  };
+
+  recipes.forEach((recipe) => appendRecipeToContainer(recipe, container));
 }
 
 populateRecipes();
