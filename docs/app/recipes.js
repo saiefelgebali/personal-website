@@ -1,10 +1,4 @@
-class Recipe {
-  /** @type {string} */
-  name;
-
-  /** @type {string} */
-  image;
-}
+import { Recipe } from "./Recipe";
 
 /** @type {Recipe[]} */
 const recipes = [

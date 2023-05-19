@@ -1,11 +1,3 @@
-@mixin animate($val) {
-  animation: $val;
-  -moz-animation: $val;
-  -webkit-animation: $val;
-  -o-animation: $val;
-  -ms-animation: $val;
-}
-
 .hero {
   flex-grow: 1;
   display: grid;
@@ -53,12 +45,6 @@
     transition: 250ms ease-out;
     overflow: hidden;
 
-    img {
-      display: block;
-      height: 100%;
-      object-fit: cover;
-    }
-
     @keyframes bounce {
       from {
         transform: translateY(10px);
@@ -67,39 +53,14 @@
         transform: translateY(0px);
       }
     }
-    @-moz-keyframes bounce {
-      from {
-        transform: translateY(10px);
-      }
-      to {
-        transform: translateY(0px);
-      }
+
+    animation: bounce 2500ms alternate-reverse infinite;
+
+    img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
     }
-    @-webkit-keyframes bounce {
-      from {
-        transform: translateY(10px);
-      }
-      to {
-        transform: translateY(0px);
-      }
-    }
-    @-o-keyframes bounce {
-      from {
-        transform: translateY(10px);
-      }
-      to {
-        transform: translateY(0px);
-      }
-    }
-    @-ms-keyframes bounce {
-      from {
-        transform: translateY(10px);
-      }
-      to {
-        transform: translateY(0px);
-      }
-    }
-    @include animate(bounce 2500ms alternate-reverse infinite);
 
     &:nth-child(1) {
       rotate: -15deg;

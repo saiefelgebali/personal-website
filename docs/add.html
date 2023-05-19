@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saief Bakes</title>
     <link rel="stylesheet" href="./styles/index.css" />
-    <script type="module" src="/app/recipes.js" defer></script>
+    <script type="module" src="/app/add.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -15,17 +15,20 @@
           <a class="logo" href="/index.html">Saief Bakes</a>
         </div>
         <ul class="link-container">
-          <li class="link link-selected">
-            <span>Recipes</span>
+          <li class="link">
+            <a href="/recipes.html">Recipes</a>
           </li>
-          <li>
-            <a href="/add.html">Add Recipe</a>
+          <li class="link link-selected">
+            <span>Add Recipe</span>
           </li>
         </ul>
       </div>
     </header>
     <main class="container">
-      <h1>Recipes</h1>
+      <h1>Add a new Recipe</h1>
+      <form>
+        <input type="text" name="name" placeholder="Carrot cake" />
+      </form>
       <div id="recipes-container" class="recipes"></div>
     </main>
   </body>
