@@ -1,5 +1,5 @@
-import { Recipe } from "./Recipe";
-import { createDatabaseConnection } from "./db";
+import { Recipe } from "./Recipe.js";
+import { createDatabaseConnection } from "./db.js";
 
 /** @type {Recipe[]} */
 const recipes = [
