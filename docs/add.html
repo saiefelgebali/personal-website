@@ -27,17 +27,25 @@
     <main class="container">
       <h1>Add a new Recipe</h1>
       <form id="add-recipe-form">
-        <input required type="text" name="name" placeholder="Carrot cake" />
-        <input
-          required
-          id="image-input"
-          type="file"
-          accept="image/*"
-          name="image"
-        />
-        <input type="submit" value="Add" />
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input required type="text" name="name" placeholder="Carrot cake" />
+        </div>
+        <div class="dropzone">
+          <label id="image-preview-container" for="image-input">
+            <div class="title">Upload Image</div>
+            <img id="image-preview" src="" alt="" />
+          </label>
+          <input
+            required
+            id="image-input"
+            type="file"
+            accept="image/*"
+            name="image"
+          />
+        </div>
+        <input type="submit" class="submit" value="Add" />
       </form>
-      <img id="image-preview" src="" alt="" />
       <div id="recipes-container" class="recipes"></div>
     </main>
   </body>

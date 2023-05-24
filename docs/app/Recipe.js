@@ -32,6 +32,8 @@ export class Recipe {
   }
 
   getImageUrl() {
+    console.log(this);
+
     if (this.image instanceof Blob) {
       return URL.createObjectURL(this.image);
     } else if (typeof this.image === "string") {

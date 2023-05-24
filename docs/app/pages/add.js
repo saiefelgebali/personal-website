@@ -2,6 +2,7 @@ import { FormValidationError } from "../errors/FormValidationError.js";
 // eslint-disable-next-line no-unused-vars
 import { Recipe } from "../Recipe.js";
 import { RecipesDatabase } from "../db.js";
+// eslint-disable-next-line no-unused-vars
 import { RecipeData } from "../RecipeData.js";
 
 const db = new RecipesDatabase();
@@ -38,7 +39,12 @@ async function handleAddRecipe(e) {
     throw new FormValidationError("imageFile is not a File object");
   }
 
-  const recipe = RecipeData(name, imageFile);
+  /** @type {RecipeData} */
+  const recipe = {
+    id: crypto.randomUUID(),
+    name: name,
+    image: imageFile,
+  };
 
   try {
     await db.addRecipe(recipe);
@@ -51,14 +57,19 @@ async function handleAddRecipe(e) {
 /** @param {Event & { currentTarget: HTMLInputElement }} e */
 function handleImagePreviewChange(e) {
   const imagePreview = document.getElementById("image-preview");
+  const imagePreviewContainer = document.getElementById(
+    "image-preview-container"
+  );
 
   const [file] = e.currentTarget.files;
   if (!file) {
+    imagePreviewContainer.classList.remove("image-selected");
     imagePreview.src = "";
     return;
   }
 
   imagePreview.src = URL.createObjectURL(file);
+  imagePreviewContainer.classList.add("image-selected");
 }
 
 void main();

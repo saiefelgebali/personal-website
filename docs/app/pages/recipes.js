@@ -28,10 +28,14 @@ const recipes = [
 function appendRecipeToContainer(recipe, container) {
   const element = document.createElement("div");
   element.className = "recipe";
-  element.innerHTML = `
+  try {
+    element.innerHTML = `
       <h2 class="name">${recipe.name}</h2>
       <img class="image" src="${recipe.getImageUrl()}" />
       `;
+  } catch (e) {
+    console.log(e);
+  }
   container.appendChild(element);
 }
 
