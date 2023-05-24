@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import { Recipe } from "./Recipe.js";
-import { createDatabaseConnection } from "./db.js";
+import { RecipesDatabase } from "./db.js";
 
 /** @type {Recipe[]} */
 const recipes = [
@@ -44,21 +45,13 @@ function appendRecipeToContainer(recipe, container) {
 async function populateRecipes() {
   const container = document.getElementById("recipes-container");
 
-  const db = await createDatabaseConnection();
+  const db = await new RecipesDatabase().start();
 
-  const recipesStore = db
-    .transaction(["recipes"], "readwrite")
-    .objectStore("recipes");
+  await db.start();
 
-  const request = recipesStore.getAll();
+  const allRecipes = [...recipes, ...(await db.getAllRecipes())];
 
-  request.onsuccess = (e) => {
-    request.result.forEach((recipe) =>
-      appendRecipeToContainer(recipe, container)
-    );
-  };
-
-  recipes.forEach((recipe) => appendRecipeToContainer(recipe, container));
+  allRecipes.forEach((recipe) => appendRecipeToContainer(recipe, container));
 }
 
 populateRecipes();

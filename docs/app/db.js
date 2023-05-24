@@ -1,38 +1,141 @@
-const dbVersion = 2;
+export class RecipesDatabase {
+  isStarted = false;
 
-/** @returns {Promise<IDBDatabase>} */
-export async function createDatabaseConnection() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open("recipes-db", dbVersion);
+  /** @private */
+  dbVersion = 2;
 
-    request.onerror = (e) => {
-      console.log(`Could not access IndexedDB. Error Code: ${e.target.error}`);
-      reject();
-    };
+  /** @private */
+  dbName = "recipes-db";
 
-    request.onsuccess = (e) => {
-      console.log("Success creating/accessing IndexedDB database");
+  /** @private */
+  recipesObjectStoreName = "recipes";
 
-      /** @type {IDBDatabase} */
-      const db = e.target.result;
+  /**
+   * @private
+   * @type {IDBDatabase}
+   */
+  db;
 
-      resolve(db);
+  /** @return {Promise<RecipesDatabase>} */
+  async start() {
+    this.db = await this.connectToIndexedDB();
 
-      db.onerror = (e) => {
-        console.log(`Database error: ${e.target.errorCode}`);
+    this.setupDatabase();
+
+    this.isStarted = true;
+
+    return this;
+  }
+
+  /** @param recipe {Recipe} */
+  async addRecipe(recipe) {
+    const recipesStore = this.db
+      .transaction([this.recipesObjectStoreName], "readwrite")
+      .objectStore(this.recipesObjectStoreName);
+
+    const request = recipesStore.add(recipe);
+
+    return new Promise((resolve, reject) => {
+      request.onsuccess = () => {
+        console.log(`Added recipe to database: ${recipe.name}`);
+        resolve();
+      };
+
+      request.onerror = () => {
+        console.log(`Could not add recipe to database: ${request.error}`);
         reject();
       };
+    });
+  }
+
+  /** @returns {Promise<Recipe[]>} */
+  async getAllRecipes() {
+    return new Promise((resolve, reject) => {
+      const recipesStore = this.db
+        .transaction([this.recipesObjectStoreName], "readwrite")
+        .objectStore(this.recipesObjectStoreName);
+
+      const request = recipesStore.getAll();
+
+      request.onsuccess = () => {
+        resolve(request.result);
+      };
+
+      request.onerror = (e) => {
+        reject(new ObjectStoreError(e.target.error));
+      };
+    });
+  }
+
+  /** @private */
+  setupDatabase() {
+    this.db.onerror = (e) => {
+      console.error(new DatabaseError(e.target.error));
     };
+  }
 
-    request.onupgradeneeded = (e) => {
-      /** @type {IDBDatabase} */
-      const db = e.target.result;
+  /** @private @param db {IDBDatabase} */
+  async setupObjectStore(db) {
+    const objectStore = db.createObjectStore(this.recipesObjectStoreName, {
+      keyPath: "id",
+    });
 
-      const objectStore = db.createObjectStore("recipes", { keyPath: "id" });
-
-      objectStore.transaction.oncomplete = (e) => {
+    return new Promise((resolve, reject) => {
+      objectStore.transaction.oncomplete = () => {
         resolve(db);
       };
-    };
-  });
+
+      objectStore.transaction.onerror = (e) => {
+        reject(new ObjectStoreError(e.target.error));
+      };
+    });
+  }
+
+  /**
+   * @private
+   * @returns {Promise<IDBDatabase>}
+   */
+  async connectToIndexedDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName, this.dbVersion);
+
+      request.onerror = (e) => {
+        reject(new DatabaseStartError(e.target.error));
+      };
+
+      request.onsuccess = (e) => {
+        /** @type {IDBDatabase} */
+        const db = e.target.result;
+
+        resolve(db);
+      };
+
+      request.onupgradeneeded = (e) => {
+        /** @type {IDBDatabase} */
+        const db = e.target.result;
+
+        this.setupObjectStore(db).then(() => {
+          resolve(db);
+        });
+      };
+    });
+  }
+}
+
+class DatabaseError extends Error {
+  constructor(message) {
+    super(`Database error: ${message}`);
+  }
+}
+
+class DatabaseStartError extends Error {
+  constructor(errorCode) {
+    super(`Could not access IndexedDB. Error Code: ${errorCode}`);
+  }
+}
+
+class ObjectStoreError extends Error {
+  constructor(message) {
+    super(`Could not access object store: ${message}`);
+  }
 }

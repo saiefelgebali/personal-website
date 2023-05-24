@@ -1,10 +1,20 @@
 import { FormValidationError } from "./FormValidationError.js";
+// eslint-disable-next-line no-unused-vars
 import { Recipe } from "./Recipe.js";
-import { createDatabaseConnection } from "./db.js";
+import { RecipesDatabase } from "./db.js";
 
 const form = document.getElementById("add-recipe-form");
+const db = new RecipesDatabase();
 
-form.addEventListener("submit", handleAddRecipe);
+async function main() {
+  try {
+    await db.start();
+  } catch (e) {
+    console.error(e);
+  }
+
+  form.addEventListener("submit", handleAddRecipe);
+}
 
 /** @param {SubmitEvent & { currentTarget: HTMLFormElement }} e */
 async function handleAddRecipe(e) {
@@ -31,21 +41,12 @@ async function handleAddRecipe(e) {
     image: imageFile,
   };
 
-  const db = await createDatabaseConnection();
-
-  const recipesStore = db
-    .transaction(["recipes"], "readwrite")
-    .objectStore("recipes");
-
-  const request = recipesStore.add(recipe);
-
-  request.onsuccess = () => {
-    console.log(`Added recipe to database: ${recipe.name}`);
-    form.reset();
-  };
-
-  request.onerror = () => {
-    console.log(`Could not add recipe to database: ${request.error}`);
-    form.reset();
-  };
+  try {
+    await db.addRecipe(recipe);
+  } catch (e) {
+    console.log(e.message);
+    return;
+  }
 }
+
+void main();
