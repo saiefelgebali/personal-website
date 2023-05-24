@@ -62,12 +62,7 @@ export class RecipesDatabase {
       const request = recipesStore.getAll();
 
       request.onsuccess = () => {
-        resolve(
-          request.result.map((res) => {
-            console.log(Recipe.fromDatabase(res));
-            return Recipe.fromDatabase(res);
-          })
-        );
+        resolve(request.result.map((res) => new Recipe(res)));
       };
 
       request.onerror = (e) => {

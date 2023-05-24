@@ -22,35 +22,14 @@ export class Recipe {
   image;
 
   /**
+   *
    * @param {RecipeData} data
    */
-  static fromDatabase(data) {
-    return new Recipe(data.id).setName(data.name).setImage(data.image);
+  constructor(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.image = data.image;
   }
-
-  /**
-   *
-   * @param {string} id
-   * @param {string | undefined} name
-   * @param {string | Blob | undefined} image
-   */
-  constructor(id = crypto.randomUUID(), name, image) {
-    this.id = id;
-    if (name) this.name = name;
-    if (image) this.image = image;
-  }
-
-  /** @param {string} name */
-  setName = (name) => {
-    this.name = name;
-    return this;
-  };
-
-  /** @param {string | Blob} image */
-  setImage = (image) => {
-    this.image = image;
-    return this;
-  };
 
   getImageUrl() {
     if (this.image instanceof Blob) {
