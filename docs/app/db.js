@@ -1,3 +1,7 @@
+import { Recipe } from "./Recipe.js";
+import { DatabaseError } from "./errors/DatabaseError.js";
+import { ObjectStoreError } from "./errors/ObjectStoreError.js";
+
 export class RecipesDatabase {
   isStarted = false;
 
@@ -58,7 +62,12 @@ export class RecipesDatabase {
       const request = recipesStore.getAll();
 
       request.onsuccess = () => {
-        resolve(request.result);
+        resolve(
+          request.result.map((res) => {
+            console.log(Recipe.fromDatabase(res));
+            return Recipe.fromDatabase(res);
+          })
+        );
       };
 
       request.onerror = (e) => {
@@ -100,7 +109,7 @@ export class RecipesDatabase {
       const request = indexedDB.open(this.dbName, this.dbVersion);
 
       request.onerror = (e) => {
-        reject(new DatabaseStartError(e.target.error));
+        reject(new DatabaseError(e.target.error));
       };
 
       request.onsuccess = (e) => {
@@ -119,23 +128,5 @@ export class RecipesDatabase {
         });
       };
     });
-  }
-}
-
-class DatabaseError extends Error {
-  constructor(message) {
-    super(`Database error: ${message}`);
-  }
-}
-
-class DatabaseStartError extends Error {
-  constructor(errorCode) {
-    super(`Could not access IndexedDB. Error Code: ${errorCode}`);
-  }
-}
-
-class ObjectStoreError extends Error {
-  constructor(message) {
-    super(`Could not access object store: ${message}`);
   }
 }
