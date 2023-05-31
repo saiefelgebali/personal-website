@@ -1,8 +1,8 @@
-import { RecipeData } from "../../RecipeData";
-import { RecipesDatabase } from "../../db";
-import { FormValidationError } from "../../errors/FormValidationError";
-import { InfoBanner } from "./InfoBanner";
-import { ImageInput } from "./imageInput";
+import { RecipeData } from "../../RecipeData.js";
+import { RecipesDatabase } from "../../db.js";
+import { FormValidationError } from "../../errors/FormValidationError.js";
+import { InfoBanner } from "./InfoBanner.js";
+import { ImageInput } from "./imageInput.js";
 
 export class AddRecipeForm {
   db = new RecipesDatabase();
