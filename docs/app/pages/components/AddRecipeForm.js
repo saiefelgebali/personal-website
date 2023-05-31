@@ -2,7 +2,7 @@ import { RecipeData } from "../../RecipeData.js";
 import { RecipesDatabase } from "../../db.js";
 import { FormValidationError } from "../../errors/FormValidationError.js";
 import { InfoBanner } from "./InfoBanner.js";
-import { ImageInput } from "./imageInput.js";
+import { ImageInput } from "./ImageInput.js";
 
 export class AddRecipeForm {
   db = new RecipesDatabase();
