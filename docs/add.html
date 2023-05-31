@@ -31,11 +31,15 @@
           <label for="name">Name</label>
           <input required type="text" name="name" placeholder="Carrot cake" />
         </div>
-        <div class="dropzone">
-          <label id="image-preview-container" for="image-input">
+        <label
+          id="image-input-container"
+          class="image-input-container"
+          for="image-input"
+        >
+          <div class="placeholder">
             <div class="title">Upload Image</div>
-            <img id="image-preview" src="" alt="" />
-          </label>
+          </div>
+          <img id="image-preview" src="" alt="" />
           <input
             required
             id="image-input"
@@ -43,6 +47,26 @@
             accept="image/*"
             name="image"
           />
+        </label>
+        <div class="info-banner">
+          <div class="text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et
+            repellendus animi veritatis id. Cum minus aliquam adipisci quidem
+            vero temporibus. A obcaecati quos ullam beatae iste reiciendis
+            veniam harum ab.
+          </div>
+          <button class="close-button">
+            <svg
+              width="75"
+              height="75"
+              viewBox="0 0 75 75"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M37.38 0C16.7836 0 0 16.7836 0 37.38C0 57.9764 16.7836 74.76 37.38 74.76C57.9764 74.76 74.76 57.9764 74.76 37.38C74.76 16.7836 57.9764 0 37.38 0ZM49.9397 45.9774C51.0237 47.0614 51.0237 48.8557 49.9397 49.9397C49.379 50.5004 48.6688 50.762 47.9585 50.762C47.2483 50.762 46.5381 50.5004 45.9774 49.9397L37.38 41.3423L28.7826 49.9397C28.2219 50.5004 27.5117 50.762 26.8015 50.762C26.0912 50.762 25.381 50.5004 24.8203 49.9397C23.7363 48.8557 23.7363 47.0614 24.8203 45.9774L33.4177 37.38L24.8203 28.7826C23.7363 27.6986 23.7363 25.9043 24.8203 24.8203C25.9043 23.7363 27.6986 23.7363 28.7826 24.8203L37.38 33.4177L45.9774 24.8203C47.0614 23.7363 48.8557 23.7363 49.9397 24.8203C51.0237 25.9043 51.0237 27.6986 49.9397 28.7826L41.3423 37.38L49.9397 45.9774Z"
+              />
+            </svg>
+          </button>
         </div>
         <input type="submit" class="submit" value="Add" />
       </form>
