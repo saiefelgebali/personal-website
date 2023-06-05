@@ -1,5 +1,6 @@
 #add-recipe-form {
   max-width: 600px;
+
   .input-group {
     margin-bottom: 1rem;
 
@@ -25,6 +26,7 @@
   }
 
   .submit {
+    cursor: pointer;
     padding: 0.5rem 1rem;
     background: green;
     border-radius: 0.25rem;
@@ -40,6 +42,12 @@
   margin-bottom: 1rem;
   overflow: hidden;
 
+  &:focus-within {
+    .placeholder {
+      border: 1px solid blue;
+    }
+  }
+
   .placeholder {
     display: grid;
     place-content: center;
@@ -47,10 +55,16 @@
     color: gray;
     background-color: white;
     cursor: pointer;
+
+    &:hover {
+      background-color: hsl(0, 0%, 96%);
+    }
   }
 
   img {
     display: none;
+    width: 100%;
+    object-fit: cover;
   }
 
   &.image-selected {
@@ -60,8 +74,6 @@
 
     img {
       display: block;
-      width: 100%;
-      object-fit: cover;
     }
   }
 
@@ -75,13 +87,15 @@
 .info-banner {
   --dark-green: rgb(0, 100, 0);
   --light-green: rgb(214, 242, 214);
+  --dark-red: rgb(100, 0, 0);
+  --light-red: rgb(242, 214, 214);
+
   border: 1px solid var(--dark-green);
   border-radius: 0.25rem;
   margin-bottom: 2rem;
   padding: 1rem;
   display: grid;
   grid-template-columns: 1fr auto;
-
   background-color: var(--light-green);
   color: var(--dark-green);
   fill: var(--dark-green);
@@ -91,8 +105,6 @@
   }
 
   &.error {
-    --dark-red: rgb(100, 0, 0);
-    --light-red: rgb(242, 214, 214);
     background-color: var(--light-red);
     color: var(--dark-red);
     fill: var(--dark-red);
@@ -100,8 +112,6 @@
 
   .close-button {
     all: unset;
-    display: block;
-    height: max-content;
     cursor: pointer;
     height: 1.5rem;
 

@@ -104,12 +104,17 @@
     background-color: transparent;
     cursor: pointer;
 
+    &:focus {
+      outline: 1px solid var(--primary-light);
+    }
+
     &.action-primary {
       background: var(--primary);
       color: white;
       transition: background-color ease-out 200ms;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--primary-light);
       }
     }
