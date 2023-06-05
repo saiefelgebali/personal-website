@@ -28,28 +28,35 @@
       <h1>Add a new Recipe</h1>
       <form id="add-recipe-form">
         <div class="input-group">
-          <label for="name">Name</label>
+          <label class="input-label" for="name">Name</label>
           <input required type="text" name="name" placeholder="Carrot cake" />
         </div>
-        <label
-          id="image-input-container"
-          class="input-group image-input-container"
-          for="image-input"
-        >
-          <div class="placeholder">
-            <span class="title">Upload Image</span>
-          </div>
+        <div class="input-group">
+          <label class="input-label" for="image-input">Image</label>
+          <label
+            id="image-input-container"
+            class="image-input-container"
+            for="image-input"
+          >
+            <div class="placeholder">
+              <span class="title">Drag & drop image to upload</span>
+            </div>
 
-          <img id="image-preview" src="" alt="preview of user-uploaded image" />
+            <img
+              id="image-preview"
+              src=""
+              alt="preview of user-uploaded image"
+            />
 
-          <input
-            required
-            id="image-input"
-            type="file"
-            accept="image/*"
-            name="image"
-          />
-        </label>
+            <input
+              required
+              id="image-input"
+              type="file"
+              accept="image/*"
+              name="image"
+            />
+          </label>
+        </div>
         <div class="info-banner">
           <div class="text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et

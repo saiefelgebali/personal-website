@@ -4,10 +4,11 @@
   .input-group {
     margin-bottom: 1rem;
 
-    label {
+    .input-label {
       display: block;
       color: gray;
       font-size: 0.8rem;
+      margin-bottom: 0.5rem;
     }
   }
 
@@ -36,25 +37,28 @@
 }
 
 .image-input-container {
-  display: block;
+  display: flex;
   border-radius: 0.25rem;
-  border: 1px solid gray;
+  border: 1px dashed gray;
   margin-bottom: 1rem;
+  aspect-ratio: 4/3;
   overflow: hidden;
 
   &:focus-within {
-    .placeholder {
-      border: 1px solid blue;
-    }
+    border: 1px solid blue;
   }
 
   .placeholder {
+    width: 100%;
     display: grid;
     place-content: center;
-    height: 4rem;
     color: gray;
     background-color: white;
     cursor: pointer;
+
+    &:-moz-drag-over {
+      background-color: hsl(0, 0%, 96%);
+    }
 
     &:hover {
       background-color: hsl(0, 0%, 96%);
@@ -64,7 +68,7 @@
   img {
     display: none;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   &.image-selected {
