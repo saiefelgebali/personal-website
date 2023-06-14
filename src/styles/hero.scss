@@ -1,3 +1,5 @@
+@import "../mixins/breakpoints.scss";
+
 .hero {
   flex-grow: 1;
   display: grid;
@@ -5,7 +7,7 @@
   place-content: center;
   gap: 4rem;
 
-  @media screen and (min-width: 900px) {
+  @include sm-breakpoint {
     & {
       grid-template-columns: 1fr 1fr;
       gap: 0rem;

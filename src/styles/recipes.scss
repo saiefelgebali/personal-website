@@ -1,21 +1,17 @@
+@import "../mixins/breakpoints.scss";
+
 .recipes {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0rem;
   padding-bottom: 2rem;
 
-  @media screen and (min-width: 450px) {
-    & {
-      grid-template-columns: 1fr 1fr;
-      gap: 0rem;
-    }
+  @include xs-breakpoint {
+    grid-template-columns: 1fr;
   }
 
-  @media screen and (min-width: 900px) {
-    & {
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0rem;
-    }
+  @include md-breakpoint {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .recipe {
