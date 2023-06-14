@@ -2,16 +2,23 @@
 
 .recipes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 0rem;
   padding-bottom: 2rem;
 
-  @include xs-breakpoint {
+  @include xxs-breakpoint {
     grid-template-columns: 1fr;
   }
 
-  @include md-breakpoint {
+  @include xs-breakpoint {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include sm-breakpoint {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include md-breakpoint {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   .recipe {
